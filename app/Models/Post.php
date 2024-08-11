@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -31,6 +32,12 @@ class Post extends Model
     public function scopeFeatured($query){
         $query->where('featured',true);
     }
+    public function scopeWithCategory($query, string $category){
+
+        $query->whereHas('categories',function ($query) use ($category){
+                $query->where('slug',$category);
+            });
+    }
     public function getExcerpt() {
         return substr(strip_tags($this->body), 0, 200) . '...';
     }
@@ -38,5 +45,9 @@ class Post extends Model
         $words = str_word_count(strip_tags($this->body));
         $minutes = ceil($words / 200);
         return $minutes . ' min read';
+    }
+    public function getThumbnailUrl() {
+       $isUrl = str_contains($this->image,'http');
+       return $isUrl ? $this->image : Storage::disk('public')->url($this->image);
     }
 }
