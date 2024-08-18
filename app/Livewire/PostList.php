@@ -43,7 +43,7 @@ class PostList extends Component
                 $query->withCategory($this->category);
             })
             ->where('title','like',"%{$this->search}%")
-            ->paginate(3);
+            ->paginate(5);
     }
     #[Computed()]
     public function activeCategory(){
