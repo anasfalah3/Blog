@@ -5,7 +5,7 @@
             <button class="gray-500 text-xs mr-3" wire:click="clearFilter()">X</button>
             @endif
             @if ($this->activeCategory)
-            
+
             <x-badge wire:navigate href="{{route('posts.index',['category'=>$this->activeCategory->slug])}}" :textColor="$this->activeCategory->text_color" :bgColor="$this->activeCategory->bg_color">
                 {{$this->activeCategory->title}}
             </x-badge>
@@ -15,6 +15,8 @@
             @endif
         </div>
         <div class="flex items-center space-x-4 font-light ">
+            <x-checkbox wire:model.live="popular" />
+            <x-label>Popular</x-label>
             <button class="{{ $sort === 'desc'? 'text-gray-700 border-b border-gray-700' : 'text-gray-500'}} py-4" wire:click="setSort('desc')">Latest</button>
             <button class="{{ $sort === 'asc'? 'text-gray-700 border-b border-gray-700' : 'text-gray-500'}} py-4" wire:click="setSort('asc')">Oldest</button>
         </div>
