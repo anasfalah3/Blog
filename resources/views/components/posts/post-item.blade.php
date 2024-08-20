@@ -10,7 +10,7 @@
         </div>
         <div class="col-span-8">
             <div class="article-meta flex py-1 text-sm items-center">
-                <x-posts.author :author="$post->author" size="xs"/>
+                <x-posts.author :author="$post->author" size="xs" />
                 <span class="text-gray-500 text-xs">. {{$post->published_at->diffForHumans()}}</span>
             </div>
             <h2 class="text-xl font-bold text-gray-900">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div>
-                    <livewire:like-button :key="$post->id . now()" :$post />
+                    <livewire:like-button :key="'like-'.$post->id . now()" :$post />
                 </div>
             </div>
         </div>
