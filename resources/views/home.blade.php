@@ -29,13 +29,13 @@
         <div class="w-full mb-5">
             <div class="grid grid-cols-3 gap-10 gap-y-32 w-full">
                 @foreach ($latestPosts as $post)
-                <x-posts.post-card :post=" $post" class="md:col-span-1 col-span-3/>
+                <x-posts.post-card :post="$post" class="md:col-span-1 col-span-3" />
                 @endforeach
 
             </div>
         </div>
-        <a class=" mt-10 block text-center text-lg text-yellow-500 font-semibold" href="http://127.0.0.1:8000/blog">More
-                    Posts</a>
-            </div>
+        <a class="mt-10 block text-center text-lg text-yellow-500 font-semibold" href="http://127.0.0.1:8000/blog">More
+            Posts</a>
+    </div>
 
 </x-app-layout>
