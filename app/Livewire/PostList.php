@@ -40,8 +40,8 @@ class PostList extends Component
     #[Computed()]
     public function posts(){
         return Post::published()
-            ->with('author','categories')
-            ->withCount('likes')
+            ->with('author','categories','likes')
+            // ->withCount('likes')
             ->when($this->activeCategory,function($query){
                 $query->withCategory($this->category);
             })
