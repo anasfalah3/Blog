@@ -1,5 +1,5 @@
 <div class="mt-10 comments-box border-t border-gray-100 pt-10">
-    <h2 class="text-2xl font-semibold text-gray-900 mb-5">Discussions</h2>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-5">{{__('singlePost.discussions')}}</h2>
     @auth
 
 
@@ -8,10 +8,10 @@
         cols="30" rows="7"></textarea>
     <button wire:click="postComment"
         class="mt-3 inline-flex items-center justify-center h-10 px-4 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-800 focus:shadow-outline focus:outline-none">
-        Post Comment
+        {{__('singlePost.post_comment')}}
     </button>
     @else
-    <a wire:navigate class="text-yellow-500 underline py-1" href="{{route('login')}}"> Login to Post Comments</a>
+    <a wire:navigate class="text-yellow-500 underline py-1" href="{{route('login')}}">{{__('singlePost.login_to_post_comments')}}</a>
     @endauth
     <div class="user-comments px-3 py-2 mt-5">
         @forelse ($this->comments as $comment)
@@ -30,11 +30,11 @@
 
 
         <div class="text-gray-500 text-center">
-            <span> No Comments Posted</span>
+            <span>{{__('singlePost.no_comments_posted')}} </span>
         </div>
         @endforelse
     </div>
-    <div  class="my-2">
+    <div class="my-2">
         {{$this->comments->links()}}
     </div>
 </div>
